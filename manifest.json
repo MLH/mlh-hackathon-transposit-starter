@@ -1,0 +1,18 @@
+{
+  "v2": {
+    "transposit": {
+      "operations": [{
+        "id": "hello_world",
+        "description": "Returns \"Hello, world\" in different languages",
+        "function": {
+          "js": "hello_world.js"
+        },
+        "access": {
+          "requireUser": true
+        }
+      }],
+      "javascriptAPIVersion": "3",
+      "source": "src"
+    }
+  }
+}

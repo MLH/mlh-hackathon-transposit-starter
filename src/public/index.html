@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+  <!-- Transposit SDK -->
+  <script src="https://unpkg.com/transposit@^0.7.3/dist/bundle.prod.js"></script>
+  <script>
+    // These variables in triple curly braces are dynamically injected by Transposit and should not be modified
+    const maintainer = "{{{maintainer}}}";
+    const applicationName = "{{{applicationName}}}";
+    const host = "{{{host}}}";
+    const transposit = new Transposit.Transposit(maintainer, applicationName, host);
+  </script>
+</head>
+<body class="bg-light">
+  <div class="container mt-3 mt-md-5">
+    <svg class="float-md-right ml-md-3" width="64" height="64" xmlns="http://www.w3.org/2000/svg">
+      <g fill-rule="nonzero" fill="none">
+        <circle fill="#94D8E8" cx="32" cy="32" r="32"/>
+        <path d="M32 54V30" stroke="#89695E" stroke-width="4"/>
+        <circle fill="#26B25E" cx="32" cy="24" r="12"/>
+        <path d="M32 46l9-9" stroke="#89695E" stroke-width="4"/>
+        <circle fill="#1D8A48" cx="42" cy="36" r="6"/>
+      </g>
+    </svg>
+    <h1>Hello, world!</h1>
+    <p class="text-secondary">
+      There's lots of ways to say "Hello, world"!
+    </p>
+  </div>
+  <div class="container mt-3 mt-md-5">
+    <div id="loading" class="alert alert-warning" role="alert">
+      Loading...
+    </div>
+    <div id="failure" class="alert alert-warning" role="alert">
+      Operation failed. See JavaScript console.
+    </div>
+    <div id="success" class="card">
+      <h5 class="card-header">Results</h5>
+      <div id="results" class="card-body">
+        <!-- Results written here -->
+      </div>
+    </div>
+  </div>
+  <script>
+    $("#failure").hide();
+    $("#success").hide();
+
+    transposit.runOperation("hello_world")
+      .then((response) => {
+        if (response.status !== "SUCCESS") {
+          throw response;
+        }
+
+        const results = response.result.results;
+
+        if (results.length === 0) {
+          $("#results").text("None");
+        } else {
+          const resultsHtml = $("<ul>").addClass("list-group");
+          for (const result of results) {
+            resultsHtml.append(
+                $("<li>").addClass("list-group-item").text(result.message)
+            );
+          }
+          $("#results").append(resultsHtml);
+        }
+
+        $("#loading").hide();
+        $("#success").show();
+      })
+      .catch((response) => {
+        if (response.requestId) {
+          console.log(`Experienced an error running an operation! View the debug logs here: ${host}/t/${maintainer}/${applicationName}/monitor/${response.requestId}`);
+        } else {
+          console.log(`The operation did not run at all. Try again, or check the deployment configurations if the problem persists: ${host}/t/${maintainer}/${applicationName}/deploy`);
+        }
+
+        $("#loading").hide();
+        $("#failure").show();
+      });
+  </script>
+</body>
+</html>
