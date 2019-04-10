@@ -3,9 +3,6 @@
     "transposit": {
       "dependencies": [{
         "name": "transposit/spotify:v1.*.*",
-        "alias": "spotify"
-      }, {
-        "name": "transposit/spotify:v1.*.*",
         "alias": "spotify-get-playlist"
       }],
       "operations": [{
