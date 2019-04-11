@@ -1,6 +1,10 @@
 {
   "v2": {
     "transposit": {
+      "dependencies": [{
+        "name": "transposit/spotify:v1.*.*",
+        "alias": "spotify-create-playlist"
+      }],
       "operations": [{
         "id": "hello_world",
         "description": "Returns \"Hello, world\" in different languages",
