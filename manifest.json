@@ -1,10 +1,6 @@
 {
   "v2": {
     "transposit": {
-      "dependencies": [{
-        "name": "transposit/spotify:v1.*.*",
-        "alias": "spotify-hack"
-      }],
       "operations": [{
         "id": "hello_world",
         "description": "Returns \"Hello, world\" in different languages",
