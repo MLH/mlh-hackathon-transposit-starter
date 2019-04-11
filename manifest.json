@@ -7,6 +7,9 @@
       }, {
         "name": "transposit/spotify:v1.*.*",
         "alias": "spotify-add"
+      }, {
+        "name": "transposit/spotify:v1.*.*",
+        "alias": "spotify"
       }],
       "operations": [{
         "id": "hello_world",
