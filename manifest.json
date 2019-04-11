@@ -26,14 +26,13 @@
             "type": "STRING"
           }],
           "js": "hello_world.js"
-        },
-        "access": {
-          "requireUser": true
         }
       }, {
         "id": "create_playlist",
         "tql": {
           "tql": "SELECT * FROM spotify-create.create_playlist\n  WHERE user_id='salce_'\n  AND $body=(SELECT {\n    'public' : true,\n    'name' : 'My Hackathon Playlist'\n  })\n\n/*\n * For sample code and reference material, visit\n * https://docs.transposit.com/get-started/sql-quickstart\n */"
+        },
+        "access": {
         }
       }, {
         "id": "webhook",
