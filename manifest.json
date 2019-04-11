@@ -18,10 +18,49 @@
         "id": "hello_world",
         "description": "Returns \"Hello, world\" in different languages",
         "function": {
+          "parameters": [{
+            "name": "user_id",
+            "default": {
+              "text": "salce_"
+            },
+            "type": "STRING"
+          }],
           "js": "hello_world.js"
         },
         "access": {
           "requireUser": true
+        }
+      }, {
+        "id": "create_playlist",
+        "tql": {
+          "tql": "SELECT * FROM spotify-create.create_playlist\n  WHERE user_id='salce_'\n  AND $body=(SELECT {\n    'public' : true,\n    'name' : 'My Hackathon Playlist'\n  })\n\n/*\n * For sample code and reference material, visit\n * https://docs.transposit.com/get-started/sql-quickstart\n */"
+        }
+      }, {
+        "id": "webhook",
+        "function": {
+          "parameters": [{
+            "name": "http_event",
+            "default": {
+              "text": "{\"http_method\": \"GET\", \"query_parameters\": {}, \"headers\": {}, \"body\": \"\"}"
+            },
+            "type": "OBJECT"
+          }],
+          "js": "webhook.js"
+        }
+      }, {
+        "id": "add_track_to_playlist",
+        "tql": {
+          "tql": "SELECT * FROM spotify-add.add_track_to_playlist\n  WHERE uris='spotify:track:7LdzfMsMSpZv7Vg6hgAbMh'\n  AND user_id='salce_'\n  AND playlist_id='0Pu5Nwh6KHZ3TJ5or55lIM'\n\n/*\n * For sample code and reference material, visit\n * https://docs.transposit.com/get-started/sql-quickstart\n */"
+        }
+      }, {
+        "id": "browse_new_releases",
+        "tql": {
+          "tql": "SELECT * FROM spotify.browse_new_releases\n  WHERE country='<string>'\n  LIMIT 10\n\n/*\n * For sample code and reference material, visit\n * https://docs.transposit.com/get-started/sql-quickstart\n */"
+        }
+      }, {
+        "id": "browse_featured_playlists",
+        "tql": {
+          "tql": "SELECT * FROM spotify-browse.browse_featured_playlists\n  WHERE country='US'\n  AND locale='US'\n  LIMIT 10\n\n/*\n * For sample code and reference material, visit\n * https://docs.transposit.com/get-started/sql-quickstart\n */"
         }
       }],
       "javascriptAPIVersion": "3",
