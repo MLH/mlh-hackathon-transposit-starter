@@ -43,6 +43,12 @@
               "text": "{\"http_method\": \"GET\", \"query_parameters\": {}, \"headers\": {}, \"body\": \"\"}"
             },
             "type": "OBJECT"
+          }, {
+            "name": "name",
+            "default": {
+              "text": "My Hackathon Playlist"
+            },
+            "type": "STRING"
           }],
           "js": "webhook.js"
         }

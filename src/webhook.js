@@ -1,12 +1,10 @@
-({ http_event }) => {
-  return {
-    status_code: 200,
-    headers: { "Content-Type": "application/json" },
-    body: { "greeting": "Hello World" }
-  };
-}
+(params) => {
+  var name = params.name;
+  
+  var bodyParams = {public: true, name: name};
+  
+  var result = api.run("spotify.create_playlist", {user_id: "salce_", $body: bodyParams});
+  
+  return {id: result[0].id};
 
-/*
- * For sample code and reference material, visit
- * https://docs.transposit.com/building/webhooks
- */
+}
