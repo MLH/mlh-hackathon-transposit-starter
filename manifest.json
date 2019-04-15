@@ -6,9 +6,6 @@
         "alias": "spotify-create"
       }, {
         "name": "transposit/spotify:v1.*.*",
-        "alias": "spotify-add"
-      }, {
-        "name": "transposit/spotify:v1.*.*",
         "alias": "spotify"
       }],
       "operations": [{
