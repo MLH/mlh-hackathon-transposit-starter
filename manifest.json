@@ -60,6 +60,10 @@
           "tql": "SELECT * FROM spotify-browse.browse_featured_playlists\n  WHERE country='US'\n  AND locale='US'\n  LIMIT 10\n\n/*\n * For sample code and reference material, visit\n * https://docs.transposit.com/get-started/sql-quickstart\n */"
         }
       }],
+      "dataConnections": [{
+        "ref": "spotify.raw",
+        "requireConsumerSignin": true
+      }],
       "javascriptAPIVersion": "3",
       "source": "src"
     }
