@@ -10,9 +10,6 @@
       }, {
         "name": "transposit/spotify:v1.*.*",
         "alias": "spotify"
-      }, {
-        "name": "transposit/spotify:v1.*.*",
-        "alias": "spotify-browse"
       }],
       "operations": [{
         "id": "hello_world",
