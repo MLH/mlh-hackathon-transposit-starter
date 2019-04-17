@@ -28,7 +28,7 @@
             },
             "type": "STRING"
           }],
-          "tql": "\nSELECT * FROM spotify.create_playlist\n  WHERE user_id=(SELECT id FROM this.get_my_profile)\n  AND $body=(SELECT {\n    'public' : true,\n    'name' : @name\n  })\n\n/*\n * For sample code and reference material, visit\n * https://docs.transposit.com/get-started/sql-quickstart\n */"
+          "tql": "\nSELECT * FROM spotify.create_playlist\n  WHERE user_id=(SELECT id FROM this.get_my_profile)\n  AND $body=(SELECT {\n    'name' : @name\n  })\n\n/*\n * For sample code and reference material, visit\n * https://docs.transposit.com/get-started/sql-quickstart\n */"
         },
         "access": {
           "requireUser": true
