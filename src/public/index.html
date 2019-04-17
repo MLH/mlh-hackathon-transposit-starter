@@ -51,7 +51,7 @@
     <div id="failure" class="alert alert-warning" role="alert">
         Please click the Settings link to connect your account!
     </div>
-    <div id="success"  class="alert-success" role="alert">
+    <div id="success"  class="alert alert-success" role="alert">
       <div id="results">
         <!-- Results written here -->
       </div>
@@ -63,13 +63,8 @@
   $("#loading").hide();
   $("#failure").hide();
   $("#success").hide();
-  $("#undo").hide();
-  $("#incorrectDate").hide();
 
-  var eventId;
   var name;
-  var date;
-
   var buttonClick = () => {
     $("#loading").show();
     $("#success").hide();
@@ -78,10 +73,7 @@
 
   $("#create").click(() => {
     name = $("#name").val();
-
- 
     buttonClick();
-
     transposit.runOperation("create_playlist",{name})
         .then((response) => {
           if (response.status !== "SUCCESS") {
@@ -111,9 +103,6 @@
         });
 
   });
-
-
-
 </script>
 </body>
 </html>
