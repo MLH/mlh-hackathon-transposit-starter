@@ -16,9 +16,9 @@
   <script src="https://unpkg.com/transposit@^0.7.0/dist/bundle.prod.js"></script>
   <script>
     // These variables in triple curly braces are dynamically injected by Transposit and should not be modified
-    const maintainer = "eddie";
-    const applicationName = "spotify_demo";
-    const host = "https://api.transposit.com";
+    const maintainer = "{{{maintainer}}}";
+    const applicationName = "{{{applicationName}}}";
+    const host = "{{{host}}}";
     const transposit = new Transposit.Transposit(maintainer, applicationName, host);
   </script>
 </head>
@@ -37,7 +37,8 @@
   <p class="text-secondary">
     Creates a Playlist on your Spotify Account no matter where you are!
   </p>
-  <div class="mb-2"><span style="width: 30px; text-align:right">Playlist Name: </span> <input type="text" style="margin-left: 4px" id="name"/></div>
+  <div class="mb-2"><span style="width: 30px; text-align:right">Playlist Name: </span> 
+    <input type="text" style="margin-left: 4px" id="name"/></div>
   <div>
     <div>
       <button class="btn-lg" id="create">Create Playlist</button>
@@ -50,8 +51,7 @@
     <div id="failure" class="alert alert-warning" role="alert">
         Please click the Settings link to connect your account!
     </div>
-    <div id="incorrectDate">Please enter a valid date</div>
-    <div id="success" class="mb-5">
+    <div id="success"  class="alert-success" role="alert">
       <div id="results">
         <!-- Results written here -->
       </div>
