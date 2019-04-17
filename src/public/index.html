@@ -74,8 +74,6 @@
     $("#loading").show();
     $("#success").hide();
     $("#failure").hide();
-    $("#incorrectDate").hide();
-    $("#undo").hide();
   };
 
   $("#create").click(() => {
@@ -98,10 +96,8 @@
 
           $("#loading").hide();
           $("#success").show();
-          $("#undo").show();
-
           $("#name").val("");
-          $("#date").val("");
+    
         })
         .catch((response) => {
           if (response.requestId) {
@@ -116,28 +112,6 @@
 
   });
 
-  $("#undo").click(() => {
-    buttonClick();
-    transposit.runOperation("Undo", {eventId})
-        .then((response) => {
-          if (response.status !== "SUCCESS") {
-            throw response;
-          }
-
-          $("#loading").hide();
-          $("#success").show();
-          $("#results").text("Removed event: " + name + "'s Birthday");
-        })
-        .catch((response) => {
-          if (response.requestId) {
-            console.log(`Experienced an error running an operation! View the debug logs here: ${host}/t/${maintainer}/${applicationName}/monitor/${response.requestId}`);
-          } else {
-            console.log(`The operation did not run at all. Try again, or check the deployment configurations if the problem persists: ${host}/t/${maintainer}/${applicationName}/deploy`);
-          }
-
-          $("#loading").hide();
-          $("#failure").show();
-        });
 
   });
 
