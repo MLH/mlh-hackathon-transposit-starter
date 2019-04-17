@@ -84,7 +84,7 @@
  
     buttonClick();
 
-    transposit.runOperation("create_playlist", {name, public:true})
+    transposit.runOperation("create_playlist", {})
         .then((response) => {
           if (response.status !== "SUCCESS") {
             throw response;
