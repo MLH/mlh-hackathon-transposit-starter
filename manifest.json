@@ -6,19 +6,6 @@
         "alias": "spotify"
       }],
       "operations": [{
-        "id": "hello_world",
-        "description": "Returns \"Hello, world\" in different languages",
-        "function": {
-          "parameters": [{
-            "name": "user_id",
-            "default": {
-              "text": "salce_"
-            },
-            "type": "STRING"
-          }],
-          "js": "hello_world.js"
-        }
-      }, {
         "id": "create_playlist",
         "tql": {
           "parameters": [{
@@ -32,24 +19,6 @@
         },
         "access": {
           "requireUser": true
-        }
-      }, {
-        "id": "webhook",
-        "function": {
-          "parameters": [{
-            "name": "http_event",
-            "default": {
-              "text": "{\"http_method\": \"GET\", \"query_parameters\": {}, \"headers\": {}, \"body\": \"\"}"
-            },
-            "type": "OBJECT"
-          }, {
-            "name": "name",
-            "default": {
-              "text": "My Hackathon Playlist"
-            },
-            "type": "STRING"
-          }],
-          "js": "webhook.js"
         }
       }, {
         "id": "add_track_to_playlist",
